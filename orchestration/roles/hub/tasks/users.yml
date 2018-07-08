@@ -1,0 +1,45 @@
+---
+- name: Configure the pi user
+  user:
+    name: pi
+    state: present
+    groups:
+      - pi
+      - users
+      - audio
+      - video
+      - spi
+      - i2c
+      - gpio
+
+- name: Debian uses the sudo group
+  group:
+    name: sudo
+    state: present
+
+- name: Configure the nopasswd for sudo group members
+  copy:
+    src: "{{ role_path }}/files/etc/sudoers.d/020_sudo-nopasswd"
+    dest: /etc/sudoers.d/020_sudo-nopasswd
+    owner: root
+    group: root
+    mode: 0440
+    backup: no
+
+- name: Capture files in sudoers.d
+  shell: >
+    ls -1 /etc/sudoers.d/
+  register: sudoers_d_files
+
+- set_fact:
+    managed_files_sudoersd:
+      - 020_sudo-nopasswd
+
+- name: Remove files except specified
+  file:
+    path: "/etc/sudoers.d/{{ item }}"
+    state: absent
+  with_items: "{{ sudoers_d_files.stdout_lines }}"
+  when: >
+    item not in managed_files_sudoersd
+

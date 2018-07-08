@@ -1,0 +1,6 @@
+---
+  - hosts: all
+    roles:
+      - base-server
+
+  - import_playbook: hub.yml

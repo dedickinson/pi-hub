@@ -1,0 +1,5 @@
+---
+- name: Make sure we have the packages we need
+  package: name={{ item }} state=present
+  with_items:
+    - python3

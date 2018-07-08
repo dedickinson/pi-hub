@@ -1,0 +1,7 @@
+---
+
+- name: Set hostname
+  hostname:
+    name: hub.lan
+
+- import_tasks: users.yml

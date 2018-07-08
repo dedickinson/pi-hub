@@ -1,0 +1,16 @@
+---
+- name: Remove ntp
+  package: 
+    name: ntp
+    state: absent
+
+- name: Install chrony
+  package: 
+    name: chrony
+    state: present
+  
+- name: Enable the service
+  service:
+    name: chronyd
+    enabled: yes
+    state: started

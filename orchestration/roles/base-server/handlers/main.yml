@@ -1,0 +1,15 @@
+---
+- name: restart sshd
+  service:
+    name: ssh
+    state: restarted
+
+- name: restart firewalld
+  service:
+    name: firewalld
+    state: restarted
+
+- name: reload firewalld
+  service:
+    name: firewalld
+    state: reloaded
