@@ -1,11 +1,11 @@
-from PyQt5.QtWidgets import QWidget, QSizePolicy, QSpacerItem, QGridLayout, QLayout, \
-    QMainWindow, QVBoxLayout
+import PyQt5
 
-from hub.widgets.desk_clock import DeskClock
-from hub.widgets.weather import WeatherWidget
+class HomeDisplay(PyQt5.QtWidgets.QWidget):
+    from PyQt5.QtWidgets import QWidget, QSizePolicy, QSpacerItem, QGridLayout, QLayout, \
+        QMainWindow, QVBoxLayout
 
-
-class HomeDisplay(QWidget):
+    from hub.widgets.desk_clock import DeskClock
+    from hub.widgets.weather import WeatherWidget
 
     def __init__(self, parent: QMainWindow, object_name="tab_home"):
         super().__init__(parent)

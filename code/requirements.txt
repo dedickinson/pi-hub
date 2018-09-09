@@ -1,4 +1,0 @@
-PyQt5>=5.0.0
-requests>=2.19.0
-urllib3>=1.23
-dataclasses
