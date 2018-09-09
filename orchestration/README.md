@@ -15,14 +15,12 @@ Try to SSH into the Pi
 
 Setup a Python virtual environment and install Ansible:
 
-    virtualenv -p python3.7 venv
-    . venv/bin/activate
-    pip install -r requirements.txt
+    make init
 
 Test that you can connect:
 
-    ansible all -m ping
+    make test
 
 ## Orchestrate!
 
-    ansible-playbook site.yml
+    make run
